@@ -11,8 +11,12 @@ const onSignUpFailure = (response) => {
 }
 
 const onSignInSuccess = (response) => {
-  $('#user-message').text('Successfully signed in.').css('color', 'white')
   store.user = response.user
+  console.log(store.user)
+  $('body').css('background-image', '')
+  $('.home-screen').hide()
+  $('.container-fluid').show()
+  $('.nav-item').show()
 }
 
 const onSignInFailure = (response) => {
@@ -28,6 +32,10 @@ const onChangeFailure = () => {
 }
 
 const onSignOutSuccess = () => {
+  $('.container-fluid').hide()
+  $('body').css('background-image', 'url("/public/home-background.jpg")')
+  $('.home-screen').show()
+  $('.nav-item').hide()
 }
 
 module.exports = {
