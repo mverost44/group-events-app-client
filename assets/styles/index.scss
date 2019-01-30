@@ -1,1 +1,15 @@
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  background-image: url('../../../public/home-background.jpg');
+
+}
+
+p {
+  color: white;
+  margin: auto;
+}
+
+.btn-group {
+  margin: auto;
+}

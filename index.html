@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Project</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -11,7 +11,91 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
+
     <body>
-      <h1>Browser Template</h1>
+<nav class="navbar navbar-dark bg-dark">
+  <p>Hello World!</p>
+</nav>
+      <!-- Sign Up -->
+
+                <div id="home-screen" class="modal-dialog modal-content modal-body">
+
+                  <div class="modal-header user-sign-up">
+                    <h5 class="modal-title">Sign Up:</h5>
+                  </div>
+                  <form id="sign-up-form" class="user-sign-up">
+              <div class="form-group">
+                <label>Name:</label>
+                <input type="string" name="credentials[name]" class="form-control" placeholder="Enter Full Name">
+              </div>
+              <div class="form-group">
+                <label>Email:</label>
+                <input type="email" name="credentials[email]" class="form-control" placeholder="Enter Email">
+              </div>
+              <div class="form-group">
+                <label>Password:</label>
+                <input type="password" name="credentials[password]" class="form-control" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label>Confirm Password:</label>
+                <input type="password" name="credentials[password_confirmation]" class="form-control" placeholder="Confirm Password">
+              </div>
+              <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+        <!-- User-Sign-In Form -->
+        <div class="modal-header user-sign-in">
+          <h5 class="modal-title">Log In:</h5>
+        </div>
+            <form id="sign-in-form" class="user-sign-in">
+        <div class="form-group">
+        <label>Email:</label>
+        <input type="email" name="credentials[email]" class="form-control" id="exampleInputEmail1" placeholder="Enter Email">
+        </div>
+
+        <div class="form-group">
+        <label>Password:</label>
+        <input type="password" name="credentials[password]" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign In</button>
+            </form>
+            <!-- footer -->
+            <div class="modal-footer">
+              <div class="btn-group" role="group">
+                <button type="button" id="toggle-sign-up-btn" class="btn btn-secondary">Sign Up</button>
+                <button type="button" id="toggle-sign-in-btn" class="btn btn-secondary">Log In</button>
+              </div>
+            </div>
+              </div>
+
+          <!-- Sign In Modal -->
+                  <!-- <div class="modal-dialog modal-content modal-body">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Log In:</h5>
+                    </div>
+                    <form id="user-sign-in">
+                <div class="form-group">
+                  <label>Email address</label>
+                  <input type="email" name="credentials[email]" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" name="credentials[password]" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Sign In!</button>
+              </form>
+
+                  </div>
+                  <!- Toggle SignUp and SignIn -->
+                  <!-- <div class="modal-footer">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" id="signUpModalBtn" class="btn btn-secondary">Sign Up</button>
+                      <button type="button" id="logInModalBtn" class="btn btn-secondary">Log In</button>
+                    </div>
+                  </div> --> -->
+
     </body>
 </html>
