@@ -12,19 +12,18 @@ const onSignUpFailure = (response) => {
 
 const onSignInSuccess = (response) => {
   store.user = response.user
-  console.log(store.user)
   $('body').css('background-image', '')
   $('.home-screen').hide()
   $('.container-fluid').show()
-  $('.nav-item').show()
+  $('.p-2').show()
 }
 
 const onSignInFailure = (response) => {
   $('#user-message').text('Incorrect Username/Password. Please try again.').css('color', 'red')
 }
 
-const onChangeSuccess = () => {
-  $('#user-message').text('Password successfully changed!').css('color', 'white')
+const onChangeSuccess = (response) => {
+  console.log(response)
 }
 
 const onChangeFailure = () => {
@@ -35,7 +34,7 @@ const onSignOutSuccess = () => {
   $('.container-fluid').hide()
   $('body').css('background-image', 'url("/public/home-background.jpg")')
   $('.home-screen').show()
-  $('.nav-item').hide()
+  $('.p-2').hide()
 }
 
 module.exports = {

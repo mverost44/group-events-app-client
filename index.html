@@ -17,12 +17,12 @@
    <!-- Nav -->
       <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
-        <ul class="navbar-nav px-3">
-          <li class="nav-item text-nowrap">
+        <ul class="navbar-nav d-flex flex-row">
+          <li class="p-2">
             <a class="nav-link" id="sign-out-btn">Sign Out</a>
           </li>
-          <li class="nav-item text-nowrap">
-            <a class="nav-link" id="change-pw-btn">Change Password</a>
+          <li class="p-2">
+            <a class="nav-link" id="change-pw-btn" data-toggle="modal" data-target="#changePasswordModal">Change Password</a>
           </li>
         </ul>
       </nav>
@@ -78,9 +78,72 @@
               </div>
             </div>
               </div>
+<!--Change PW Modal  -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Change Password:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
-     <!-- Dashboard -->
+            <form id="user-change-pw">
+        <div class="form-group">
+          <label>Old Password</label>
+          <input type="text" name="passwords[old]" class="form-control" placeholder="Old password here">
+        </div>
+        <div class="form-group">
+          <label>New Password</label>
+          <input type="text" name="passwords[new]" class="form-control" placeholder="New password here">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Dashboard Modals-->
+                                  <!-- Create Group Modal -->
+                                  <div class="modal fade" id="createGroupModal" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title">Create A Group:</h5>
+                                              <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                              <form id="create-group">
+                                          <div class="form-group">
+                                            <label>Group Name:</label>
+                                            <input type="text" name="group[name]" class="form-control" placeholder="Use yo noggin!">
+                                          </div>
+                                          <div class="form-group">
+                                            <label>Description</label>
+                                            <input type="text" name="group[description]" class="form-control" placeholder="Be descriptive!">
+                                          </div>
+                                          <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+        <!-- SideNav -->
               <div class="container-fluid">
                 <div class="row">
                   <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -93,33 +156,31 @@
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">
-                            <span data-feather="file"></span>
-                            Orders
+                          <a class="nav-link" data-toggle="modal" data-target="#createGroupModal">
+                            Create Group
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">
-                            <span data-feather="shopping-cart"></span>
-                            Products
+                          <a class="nav-link" id="get-groups">
+                            See all Public Groups
                           </a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#">
                             <span data-feather="users"></span>
-                            Customers
+                            See One Group
                           </a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#">
                             <span data-feather="bar-chart-2"></span>
-                            Reports
+                            Update a Group
                           </a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#">
                             <span data-feather="layers"></span>
-                            Integrations
+                            Delete A Group
                           </a>
                         </li>
                       </ul>
@@ -158,7 +219,7 @@
                       </ul>
                     </div>
                   </nav>
-
+                    <!-- Main Dashboard -->
                   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                       <h1 class="h2">Dashboard</h1>
@@ -174,7 +235,7 @@
                       </div>
                     </div>
 
-                    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+                    <div class="my-4 w-100" id="dashFeed" width="900" height="380"></div>
 
 
                     </div>

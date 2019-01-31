@@ -1,0 +1,19 @@
+{{#each groups as |group|}}
+  {{log group}}
+
+  <div data-id="{{group.id}}">
+    <h1> <small>{{group.name}}</small></h1>
+    <p>{{group.description}}</p>
+
+    <h2>Members:</h2>
+    {{#if group.user.name}}
+      {{group.user.name}}
+    {{else}}
+      No members.
+    {{/if}}
+    <button class="btn btn-primary" data-id="{{group.id}}" type="submit">Remove</button>
+    <button class="btn btn-primary" data-id="{{group.id}}" type="submit">Join</button>
+  </div>
+
+
+{{/each}}

@@ -6,6 +6,7 @@
 // use require without a reference to ensure a file is bundled
 // require('./example')
 const events = require('./auth/events.js')
+const groupEvents = require('./groups/events.js')
 
 $(() => {
   // background image for home-screen
@@ -13,7 +14,7 @@ $(() => {
   // Hidden on page load
   $('.user-sign-in').hide()
   $('.container-fluid').hide()
-  $('.nav-item').hide()
+  $('.p-2').hide()
   // Toggle Sign-up/in
   $('#toggle-sign-in-btn').on('click', function () {
     $('.user-sign-up').hide()
@@ -28,4 +29,7 @@ $(() => {
   $('#sign-in-form').on('submit', events.onSignIn)
   $('#user-change-password').on('submit', events.onChangePassword)
   $('#sign-out-btn').on('click', events.onSignOut)
+  $('#user-change-pw').on('submit', events.onChangePassword)
+  // Group CRUD
+  groupEvents.addHandlers()
 })
