@@ -13,12 +13,23 @@
     </head>
 
     <body>
-<nav class="navbar navbar-dark bg-dark">
-  <p>Hello World!</p>
-</nav>
+
+   <!-- Nav -->
+      <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+        <ul class="navbar-nav d-flex flex-row">
+          <li class="p-2">
+            <a class="nav-link" id="sign-out-btn">Sign Out</a>
+          </li>
+          <li class="p-2">
+            <a class="nav-link" id="change-pw-btn" data-toggle="modal" data-target="#changePasswordModal">Change Password</a>
+          </li>
+        </ul>
+      </nav>
+
       <!-- Sign Up -->
 
-                <div id="home-screen" class="modal-dialog modal-content modal-body">
+                <div class="modal-dialog modal-content modal-body home-screen">
 
                   <div class="modal-header user-sign-up">
                     <h5 class="modal-title">Sign Up:</h5>
@@ -67,35 +78,156 @@
               </div>
             </div>
               </div>
+<!--Change PW Modal  -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Change Password:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
-          <!-- Sign In Modal -->
-                  <!-- <div class="modal-dialog modal-content modal-body">
-                    <div class="modal-header">
-                      <h5 class="modal-title">Log In:</h5>
+            <form id="user-change-pw">
+        <div class="form-group">
+          <label>Old Password</label>
+          <input type="text" name="passwords[old]" class="form-control" placeholder="Old password here">
+        </div>
+        <div class="form-group">
+          <label>New Password</label>
+          <input type="text" name="passwords[new]" class="form-control" placeholder="New password here">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Dashboard Modals-->
+                                  <!-- Create Group Modal -->
+                                  <div class="modal fade" id="createGroupModal" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title">Create A Group:</h5>
+                                              <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                              <form id="create-group">
+                                          <div class="form-group">
+                                            <label>Group Name:</label>
+                                            <input type="text" name="group[name]" class="form-control" placeholder="Use yo noggin!">
+                                          </div>
+                                          <div class="form-group">
+                                            <label>Description</label>
+                                            <input type="text" name="group[description]" class="form-control" placeholder="Be descriptive!">
+                                          </div>
+                                          <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+        <!-- SideNav -->
+              <div class="container-fluid">
+                <div class="row">
+                  <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#">
+                            <span data-feather="home"></span>
+                            Dashboard <span class="sr-only">(current)</span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="modal" data-target="#createGroupModal">
+                            Create Group
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="get-groups">
+                            Public Groups
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="user-groups">
+                            Your Groups
+                          </a>
+                        </li>
+                      </ul>
+
+                      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Saved reports</span>
+                        <a class="d-flex align-items-center text-muted" href="#">
+                          <span data-feather="plus-circle"></span>
+                        </a>
+                      </h6>
+                      <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <span data-feather="file-text"></span>
+                            Current month
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <span data-feather="file-text"></span>
+                            Last quarter
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <span data-feather="file-text"></span>
+                            Social engagement
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <span data-feather="file-text"></span>
+                            Year-end sale
+                          </a>
+                        </li>
+                      </ul>
                     </div>
-                    <form id="user-sign-in">
-                <div class="form-group">
-                  <label>Email address</label>
-                  <input type="email" name="credentials[email]" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-
-                <div class="form-group">
-                  <label>Password</label>
-                  <input type="password" name="credentials[password]" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-
-                <button type="submit" class="btn btn-primary">Sign In!</button>
-              </form>
-
-                  </div>
-                  <!- Toggle SignUp and SignIn -->
-                  <!-- <div class="modal-footer">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" id="signUpModalBtn" class="btn btn-secondary">Sign Up</button>
-                      <button type="button" id="logInModalBtn" class="btn btn-secondary">Log In</button>
+                  </nav>
+                    <!-- Main Dashboard -->
+                  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                      <h1 class="h2">Dashboard</h1>
+                      <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group mr-2">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                          <span data-feather="calendar"></span>
+                          This week
+                        </button>
+                      </div>
                     </div>
-                  </div> --> -->
+
+                    <div class="my-4 w-100" id="dashFeed" width="900" height="380"></div>
+
+
+                    </div>
+                  </main>
+                </div>
 
     </body>
 </html>

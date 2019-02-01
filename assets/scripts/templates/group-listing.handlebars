@@ -1,0 +1,18 @@
+{{#each groups as |group|}}
+  {{log group}}
+
+  <div class="card text-center">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{group.name}}</h5>
+    <p class="card-text">Description: {{group.description}}</p>
+  </div>
+  <div class="card-footer text-muted">
+    <button data-id="{{group.id}}" class="btn join" type="submit">Join</button>
+  </div>
+</div>
+
+
+{{/each}}

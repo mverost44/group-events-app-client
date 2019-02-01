@@ -35,7 +35,7 @@ const onChangePassword = event => {
     .then(ui.onChangeSuccess)
     .catch(ui.onChangeFailure)
 
-  $('#user-change-password').trigger('reset')
+  $('#user-change-pw').trigger('reset')
   $('#changePasswordModal').modal('hide')
 }
 
