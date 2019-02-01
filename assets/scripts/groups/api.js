@@ -20,18 +20,44 @@ const getGroups = function () {
   })
 }
 
-const joinGroup = function () {
+const userGroups = function () {
+  return $.ajax({
+    url: config.apiUrl + '/organized-groups',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const joinGroup = function (data) {
   return $.ajax({
     url: config.apiUrl + '/group_members',
     method: 'POST',
     headers: {
       contentType: 'application/json'
     },
-    data: {
-      'group_member': {
-        'group_id': store.group.id,
-        'user_id': store.user.id
-      }
+    data: data
+  })
+}
+
+const updateGroup = function (formData, groupId) {
+  return $.ajax({
+    url: config.apiUrl + '/groups/' + groupId,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: formData
+  })
+}
+
+const deleteGroup = function (groupId) {
+  return $.ajax({
+    url: config.apiUrl + '/groups/' + groupId,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
     }
   })
 }
@@ -39,10 +65,8 @@ const joinGroup = function () {
 module.exports = {
   createGroup,
   getGroups,
-  joinGroup
+  joinGroup,
+  deleteGroup,
+  userGroups,
+  updateGroup
 }
-
-// headers: {
-  //   contentType: 'application/json',
-  //   Authorization: 'Token token=' + store.user.token
-  // },
