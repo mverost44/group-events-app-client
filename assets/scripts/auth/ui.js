@@ -35,7 +35,7 @@ const onChangeFailure = () => {
 const onSignOutSuccess = () => {
   $('#dashFeed').empty()
   $('.container-fluid').hide()
-  $('body').css('background-image', 'url("/public/home-background.jpg")')
+  $('body').css('background-image', 'url("public/home-background.jpg")')
   $('.home-screen').show()
   $('.p-2').hide()
   $('.dropdown').hide()
