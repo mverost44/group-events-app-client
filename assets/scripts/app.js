@@ -7,14 +7,15 @@
 // require('./example')
 const events = require('./auth/events.js')
 const groupEvents = require('./groups/events.js')
+const eventsEvents = require('./events/events.js')
 
 $(() => {
   // background image for home-screen
   $('body').css('background-image', 'url("/public/home-background.jpg")')
   // Hidden on page load
+  $('#dropdown').hide()
   $('.user-sign-in').hide()
   $('.container-fluid').hide()
-  $('.p-2').hide()
   // Toggle Sign-up/in
   $('#toggle-sign-in-btn').on('click', function () {
     $('.user-sign-up').hide()
@@ -32,4 +33,6 @@ $(() => {
   $('#user-change-pw').on('submit', events.onChangePassword)
   // Group CRUD
   groupEvents.addHandlers()
+  // Events CRUD
+  eventsEvents.addHandlers()
 })

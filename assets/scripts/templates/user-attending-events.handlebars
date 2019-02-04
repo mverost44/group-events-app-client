@@ -1,0 +1,17 @@
+<div class="card-deck">
+
+{{#each attending_members as |this|}}
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{this.event.[name]}}</h5>
+      <p class="card-text">{{this.event.[description]}}</p>
+      <p class="card-text"><strong>Where: </strong>{{event.location}}</p>
+      <p class="card-text"><strong>When: </strong>{{event.date_time}}</p>
+    </div>
+    <div class="card-footer">You're Going!</div>
+    </div>
+
+  {{/each}}
+
+</div>

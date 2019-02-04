@@ -58,7 +58,7 @@ const onUpdateGroup = (event) => {
   formData.group['user_id'] = store.user.id
 
   api.updateGroup(formData, groupId)
-    .then(ui.onCreateSuccess)
+    .then(ui.onUpdateSuccess)
     .catch(ui.onFailure)
 }
 
@@ -67,14 +67,23 @@ const onDeleteGroup = (event) => {
   const groupId = $(event.target).data('id')
 
   api.deleteGroup(groupId)
-    .then(() => onGetUserGroups(event))
+    .then(ui.onDeleteSuccess)
+    .catch(ui.onFailure)
+}
+
+const onGetGroupMember = function () {
+  event.preventDefault()
+
+  api.getGroupMember()
+    .then(ui.onGroupMemberSuccess)
     .catch(ui.onFailure)
 }
 
 const addHandlers = () => {
   $('#create-group').on('submit', onCreateGroup)
-  $('#get-groups').on('click', onGetGroups)
-  $('#user-groups').on('click', onGetUserGroups)
+  $('.get-groups').on('click', onGetGroups)
+  $('.user-member').on('click', onGetGroupMember)
+  $('.user-groups').on('click', onGetUserGroups)
   $('#dashFeed').on('click', '.join', onJoinGroup)
   $('#dashFeed').on('click', '.delete', onDeleteGroup)
   $('#dashFeed').on('submit', '.update', onUpdateGroup)

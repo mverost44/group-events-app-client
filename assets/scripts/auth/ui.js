@@ -3,11 +3,11 @@
 const store = require('../store')
 
 const onSignUpSuccess = (response) => {
-  console.log(response)
+  $('.home-screen').append('<div class="alert alert-success" role="alert">Successfully Signed Up!</div>')
 }
 
 const onSignUpFailure = (response) => {
-  console.log(response)
+  $('.home-screen').append('<div class="alert alert-warning" role="alert">something went wrong, try again.</div>')
 }
 
 const onSignInSuccess = (response) => {
@@ -16,25 +16,30 @@ const onSignInSuccess = (response) => {
   $('.home-screen').hide()
   $('.container-fluid').show()
   $('.p-2').show()
+  $('.dropdown').show()
+  $('.my-4').append('<div class="alert alert-success" role="alert">Signed In!</div>')
 }
 
 const onSignInFailure = (response) => {
-  $('#user-message').text('Incorrect Username/Password. Please try again.').css('color', 'red')
+  $('.home-screen').append('<div class="alert alert-warning" role="alert">Something went wrong, try again.</div>')
 }
 
 const onChangeSuccess = (response) => {
-  console.log(response)
+  $('.home-screen').append('<div class="alert alert-success" role="alert">Successfully changed password!</div>')
 }
 
 const onChangeFailure = () => {
-  $('#user-message').text('Error. Try AGAIN').css('color', 'red')
+  $('.home-screen').append('<div class="alert alert-warning" role="alert">Something went wrong.</div>')
 }
 
 const onSignOutSuccess = () => {
+  $('#dashFeed').empty()
   $('.container-fluid').hide()
   $('body').css('background-image', 'url("/public/home-background.jpg")')
   $('.home-screen').show()
   $('.p-2').hide()
+  $('.dropdown').hide()
+  $('.home-screen').append('<div class="alert alert-warning" role="alert">Signed Out.</div>')
 }
 
 module.exports = {

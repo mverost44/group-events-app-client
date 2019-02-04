@@ -1,0 +1,21 @@
+<div class="card-deck">
+
+{{#each events as |event|}}
+
+  <div class="card">
+    <div class="card-header">Event</div>
+    <div class="card-body">
+      <h5 class="card-title">{{event.name}}</h5>
+      <p class="card-text">{{event.description}}</p>
+      <p class="card-text"><strong>Where: </strong>{{event.location}}</p>
+      <p class="card-text"><strong>When: </strong>{{event.date_time}}</p>
+
+    </div>
+    <div class="card-footer">
+      <button data-id="{{event.id}}" class="btn attend" type="submit">Attend Event</button>
+      <button data-id="{{event.id}}" class="btn btn-primary-success event-info" type="submit">Show More</button>
+    </div>
+  </div>
+  {{/each}}
+
+</div>

@@ -70,11 +70,24 @@ body {
   [role="main"] {
     padding-top: 48px; /* Space for fixed navbar */
   }
+  #dropdownMenuButton {
+    visibility: hidden;
+  }
 }
 
 /*
  * Navbar
  */
+@media (max-width: 768px) {
+  #dropdownMenuButton {
+    visibility: visible;
+  }
+  #dropdown-menu {
+    background-color: inherit;
+    width: inherit;
+    border: none;
+  }
+}
 
 .navbar-brand {
   padding-top: .75rem;

@@ -17,15 +17,29 @@
    <!-- Nav -->
       <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
-        <ul class="navbar-nav d-flex flex-row">
-          <li class="p-2">
-            <a class="nav-link" id="sign-out-btn">Sign Out</a>
-          </li>
-          <li class="p-2">
-            <a class="nav-link" id="change-pw-btn" data-toggle="modal" data-target="#changePasswordModal">Change Password</a>
-          </li>
-        </ul>
+
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu
+              </button>
+          <div class="dropdown-menu" id="#dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+            <a class="dropdown-item nav-link" href="#" data-toggle="modal" data-target="#createGroupModal">
+              Create Group
+            </a>
+            <a class="dropdown-item nav-link get-groups" href="#">
+              Public Groups
+            </a>
+            <a class="dropdown-item nav-link user-groups" href="#">
+              Groups You Manage
+            </a>
+            <a class="dropdown-item nav-link user-member" href="#">
+              Groups You're In
+            </a>
+          </div>
+        </div>
       </nav>
+
 
       <!-- Sign Up -->
 
@@ -156,78 +170,56 @@
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" data-toggle="modal" data-target="#createGroupModal">
+                          <a class="nav-link" href="#" data-toggle="modal" data-target="#createGroupModal">
                             Create Group
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" id="get-groups">
+                          <a class="nav-link get-groups" href="#">
                             Public Groups
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" id="user-groups">
-                            Your Groups
+                          <a class="nav-link user-groups" href="#">
+                            Groups You Manage
                           </a>
                         </li>
-                      </ul>
-
-                      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Saved reports</span>
-                        <a class="d-flex align-items-center text-muted" href="#">
-                          <span data-feather="plus-circle"></span>
+                      <li class="nav-item">
+                        <a class="nav-link user-member" href="#">
+                          Groups You're In
                         </a>
-                      </h6>
-                      <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Current month
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Last quarter
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Social engagement
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Year-end sale
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </nav>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+
+
+
                     <!-- Main Dashboard -->
                   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                       <h1 class="h2">Dashboard</h1>
                       <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group mr-2">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                        </div>
-                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                          <span data-feather="calendar"></span>
-                          This week
-                        </button>
+                        <div class="btn-group dropleft">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                          </button>
+                      <div class="dropdown-menu">
+
+                        <a class="dropdown-item" href="#" id="sign-out-btn">
+                          Signout
+                        </a>
+                        <a class="dropdown-item" href="#" id="change-pw-btn" data-toggle="modal" data-target="#changePasswordModal">
+                          Change Password
+                        </a>
                       </div>
                     </div>
-
-                    <div class="my-4 w-100" id="dashFeed" width="900" height="380"></div>
-
-
-                    </div>
-                  </main>
+                  </div>
                 </div>
 
-    </body>
-</html>
+              <div class="my-4 w-100" id="dashFeed" width="900" height="380"></div>
+            </div>
+          </main>
+        </div>
+      </body>
+      </html>
