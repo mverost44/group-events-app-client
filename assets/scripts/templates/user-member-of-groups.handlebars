@@ -1,0 +1,18 @@
+{{#each group_members as |this|}}
+  {{log this.group.[name]}}
+
+  <div class="card text-center">
+  <div class="card-header">
+    You Are A Member Of:
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{this.group.[name]}}</h5>
+    <p class="card-text">Description: {{this.group.[description]}}</p>
+  </div>
+  <div class="card-footer text-muted">
+    <button data-id="{{this.group.[id]}}" class="btn events" type="submit">Events</button>
+  </div>
+</div>
+
+
+{{/each}}

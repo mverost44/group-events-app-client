@@ -1,0 +1,18 @@
+
+{{> eventPartial parameter=attending_members.[0]}}
+
+<div class="card-deck">
+
+{{#each attending_members as |this|}}
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{this.user.[name]}}</h5>
+      <p class="card-text">{{this.user.[email]}}</p>
+    </div>
+    <div class="card-footer">Going</div>
+    </div>
+
+  {{/each}}
+
+</div>

@@ -13,13 +13,13 @@ const createGroup = function (formData) {
     data: formData
   })
 }
-
+// get all groups
 const getGroups = function () {
   return $.ajax({
     url: config.apiUrl + '/groups'
   })
 }
-
+// get user organized groups
 const userGroups = function () {
   return $.ajax({
     url: config.apiUrl + '/organized-groups',
@@ -29,13 +29,14 @@ const userGroups = function () {
     }
   })
 }
-
+// join a group
 const joinGroup = function (data) {
   return $.ajax({
     url: config.apiUrl + '/group_members',
     method: 'POST',
     headers: {
-      contentType: 'application/json'
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
     },
     data: data
   })
@@ -62,11 +63,24 @@ const deleteGroup = function (groupId) {
   })
 }
 
+// Get groups user is a member of
+const getGroupMember = function () {
+  return $.ajax({
+    url: config.apiUrl + '/group_members',
+    method: 'GET',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   createGroup,
   getGroups,
   joinGroup,
   deleteGroup,
   userGroups,
-  updateGroup
+  updateGroup,
+  getGroupMember
 }
