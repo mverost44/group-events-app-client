@@ -83,7 +83,7 @@ const onUpdateSuccess = (data) => {
   $('form').trigger('reset')
 }
 
-const onFailure = response => console.log(response, 'Didn\'t work')
+const onFailure = response => // console.log(response, 'Didn\'t work')
 
 module.exports = {
   onCreateSuccess,

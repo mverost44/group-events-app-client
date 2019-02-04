@@ -76,7 +76,7 @@ const onUpdateSuccess = function (data) {
   $('form').trigger('reset')
 }
 
-const onFailure = data => console.log(data)
+const onFailure = data => // console.log(data)
 
 module.exports = {
   onCreateEventSuccess,
