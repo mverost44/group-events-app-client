@@ -11,7 +11,7 @@ const eventsEvents = require('./events/events.js')
 
 $(() => {
   // background image for home-screen
-  $('body').css('background-image', 'url("/public/home-background.jpg")')
+  $('body').css('background-image', 'url("public/home-background.jpg")')
   // Hidden on page load
   $('#dropdown').hide()
   $('.user-sign-in').hide()
