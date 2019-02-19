@@ -34,7 +34,7 @@ const onSignInFailure = (response) => {
 }
 
 const onChangeSuccess = (response) => {
-  $('.alert').alert('close')
+  $('.my-4').empty()
 
   $('.my-4').append('<div class="alert alert-success" role="alert">Successfully changed password!</div>')
 }
