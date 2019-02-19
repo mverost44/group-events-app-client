@@ -10,6 +10,7 @@ const onCreateEvent = (event) => {
 
   const formData = getFormFields(event.target)
   formData.event['group_id'] = $(event.target).data('id')
+  formData.event['user_id'] = store.user.id
 
   api.createEvent(formData)
     .then(ui.onCreateEventSuccess)
@@ -36,6 +37,14 @@ const onDeleteEvent = function (event) {
     .catch(ui.onFailure)
 }
 
+const onShowEventInfo = function (event) {
+  event.preventDefault()
+  const eventId = $(event.target).data('id')
+  api.showEventInfo(eventId)
+    .then(ui.onShowInfoSuccess)
+    .catch(ui.onShowInfoFailure)
+}
+
 const onAttendEvent = function (event) {
   event.preventDefault()
 
@@ -48,13 +57,7 @@ const onAttendEvent = function (event) {
 
   api.attendEvent(data)
     .then(ui.onAttendSuccess)
-    .catch(ui.onFailure)
-}
-
-const onShowEventInfo = function (event) {
-  event.preventDefault()
-  const eventId = $(event.target).data('id')
-  api.showEventInfo(eventId)
+    .then((eventId) => api.showEventInfo(eventId))
     .then(ui.onShowInfoSuccess)
     .catch(ui.onFailure)
 }

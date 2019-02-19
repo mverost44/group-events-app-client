@@ -3,14 +3,20 @@
 const store = require('../store')
 
 const onSignUpSuccess = (response) => {
+  $('.alert').alert('close')
   $('.home-screen').append('<div class="alert alert-success" role="alert">Successfully Signed Up!</div>')
+  $('#sign-up-span').toggleClass('spinner-grow spinner-grow-sm')
 }
 
 const onSignUpFailure = (response) => {
-  $('.home-screen').append('<div class="alert alert-warning" role="alert">something went wrong, try again.</div>')
+  $('.alert').alert('close')
+  $('.home-screen').append('<div class="alert alert-warning" role="alert">Failed to Sign Up, try again.</div>')
+  $('#sign-up-span').toggleClass('spinner-grow spinner-grow-sm')
 }
 
 const onSignInSuccess = (response) => {
+  $('.alert').alert('close')
+
   store.user = response.user
   $('body').css('background-image', '')
   $('.home-screen').hide()
@@ -18,21 +24,31 @@ const onSignInSuccess = (response) => {
   $('.p-2').show()
   $('.dropdown').show()
   $('.my-4').append('<div class="alert alert-success" role="alert">Signed In!</div>')
+  return event
 }
 
 const onSignInFailure = (response) => {
-  $('.home-screen').append('<div class="alert alert-warning" role="alert">Something went wrong, try again.</div>')
+  $('.alert').alert('close')
+
+  $('.home-screen').append('<div class="alert alert-warning" role="alert">Failed to sign in, please try again.</div>')
 }
 
 const onChangeSuccess = (response) => {
-  $('.home-screen').append('<div class="alert alert-success" role="alert">Successfully changed password!</div>')
+  $('.alert').alert('close')
+
+  $('.my-4').append('<div class="alert alert-success" role="alert">Successfully changed password!</div>')
 }
 
 const onChangeFailure = () => {
-  $('.home-screen').append('<div class="alert alert-warning" role="alert">Something went wrong.</div>')
+  $('.alert').alert('close')
+
+  $('.my-4').append('<div class="alert alert-warning" role="alert">Failed to change password, please try again.</div>')
 }
 
 const onSignOutSuccess = () => {
+  $('.alert').alert('close')
+  store.user = [-1]
+  store.groupmember = [-1]
   $('#dashFeed').empty()
   $('.container-fluid').hide()
   $('body').css('background-image', 'url("public/home-background.jpg")')

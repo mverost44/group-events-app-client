@@ -1,6 +1,7 @@
+
 <div class="card-deck">
 
-{{#each events as |event|}}
+{{#with event as |event|}}
 
   <div class="card">
     <div class="card-header">Event</div>
@@ -12,10 +13,12 @@
 
     </div>
     <div class="card-footer">
+      {{#if (eventMember event.attending_members)}}
       <button data-id="{{event.id}}" class="btn attend" type="submit">Attend Event</button>
+      {{/if}}
       <button data-id="{{event.id}}" class="btn btn-primary-success event-info" type="submit">Show More</button>
     </div>
   </div>
-  {{/each}}
+  {{/with}}
 
 </div>

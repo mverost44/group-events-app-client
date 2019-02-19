@@ -3,7 +3,6 @@ const store = require('./../store')
 const createEventTemplate = require('./../templates/create-event.handlebars')
 const getEventsTemplate = require('./../templates/get-events.handlebars')
 const eventInfoTemplate = require('./../templates/event-info.handlebars')
-const userEventsTemplate = require('./../templates/user-attending-events.handlebars')
 
 const onCreateEventSuccess = (data) => {
   $('.my-4').empty()
@@ -19,19 +18,14 @@ const onCreateEventSuccess = (data) => {
 
 const getEventsSuccess = (response) => {
   $('.my-4').empty()
-
   if (response.events.length !== 0) {
     $.each(response, function () {
       $.each(this, function () {
         if (store.organizer.some(x => x === this.group_id)) {
-          $('.my-4').append('<div class="alert alert-success" role="alert">These are yours</div>')
-
           const showOrganizerEventsHtml = createEventTemplate({ event: this })
           $('.my-4').append(showOrganizerEventsHtml)
         } else {
-          $('.my-4').append('<div class="alert alert-success" role="alert">Looks fun! Get off your ass and go to one!</div>')
-
-          const showEventsHtml = getEventsTemplate({ events: response.events })
+          const showEventsHtml = getEventsTemplate({ event: this })
           $('.my-4').append(showEventsHtml)
         }
       })
@@ -47,7 +41,10 @@ const deleteEventSuccess = () => {
 }
 
 const onAttendSuccess = (response) => {
+  $('.my-4').empty()
   $('.my-4').append('<div class="alert alert-success" role="alert">Your\'re all set to attend this event!</div>')
+
+  return response.attending_member.event['id']
 }
 
 const onShowInfoSuccess = function (response) {
@@ -58,10 +55,9 @@ const onShowInfoSuccess = function (response) {
   $('.my-4').append(eventInfoHtml)
 }
 
-const onUserAttendingSuccess = function (response) {
+const onShowInfoFailure = function () {
   $('.my-4').empty()
-  const eventInfoHtml = userEventsTemplate({ attending_members: response.attending_members })
-  $('.my-4').append(eventInfoHtml)
+  $('.my-4').append('<div class="alert alert-danger" role="alert">Looks like nobody is going yet. Click "Attend Event" to get the ball rolling!</div>')
 }
 
 const onUpdateSuccess = function (data) {
@@ -85,6 +81,6 @@ module.exports = {
   deleteEventSuccess,
   onAttendSuccess,
   onShowInfoSuccess,
-  onUserAttendingSuccess,
-  onUpdateSuccess
+  onUpdateSuccess,
+  onShowInfoFailure
 }

@@ -71,7 +71,7 @@ const onDeleteGroup = (event) => {
     .catch(ui.onFailure)
 }
 
-const onGetGroupMember = function () {
+const onGetGroupMember = function (event) {
   event.preventDefault()
 
   api.getGroupMember()

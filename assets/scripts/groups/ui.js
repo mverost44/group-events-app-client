@@ -7,6 +7,7 @@ const showUserGroupsTemplate = require('./../templates/user-groups.handlebars')
 const groupMemberTemplate = require('./../templates/group-member.handlebars')
 const userMemberOfTemplate = require('./../templates/user-member-of-groups.handlebars')
 store.organizer = [-1]
+store.groupmember = [-1]
 
 const onCreateSuccess = (data) => {
   $('.my-4').empty()
@@ -22,17 +23,22 @@ const onCreateSuccess = (data) => {
 
 const getGroupsSuccess = (data) => {
   $('.my-4').empty()
-  $('.my-4').append('<div class="alert alert-success" role="alert">Check out all these groups!</div>')
+  if (data.length !== 0) {
+    $('.my-4').append('<div class="alert alert-success" role="alert">Check out all these groups!</div>')
 
-  $.each(data, function () {
-    $.each(this, function () {
-      if (this.user_id !== store.user.id) {
-        const showGroupsHtml = showGroupsTemplate({ group: this })
-        $('.my-4').append(showGroupsHtml)
-      } else {
-      }
+    $.each(data, function () {
+      $.each(this, function () {
+      // filters out groups that user is a member of
+        if (store.groupmember.includes(this.id)) {
+        } else {
+          const showGroupsHtml = showGroupsTemplate({ group: this })
+          $('.my-4').append(showGroupsHtml)
+        }
+      })
     })
-  })
+  } else {
+    $('.my-4').append('<div class="alert alert-warning" role="alert">Looks like there aren\'nt any groups yet. Click \'Create Group\' to kick things off!</div>')
+  }
 }
 
 const onUserGroupSuccess = (data) => {
@@ -56,14 +62,22 @@ const onJoinSuccess = function (data) {
 
   const showGroupsHtml = groupMemberTemplate({ group_member: data.group_member })
   $('.my-4').append(showGroupsHtml)
+  store.groupmember.push(data.group_member.group_id)
 }
 
 const onGroupMemberSuccess = function (data) {
+  store.groupmember = []
   $('.my-4').empty()
-  $('.my-4').append('<div class="alert alert-success" role="alert">You joined these!</div>')
+  $('.my-4').append('<div class="alert alert-success" role="alert">Groups you\'re in:</div>')
 
   const showGroupsHtml = userMemberOfTemplate({ group_members: data.group_members })
   $('.my-4').append(showGroupsHtml)
+
+  $.each(data, function () {
+    $.each(this, function () {
+      store.groupmember.push(this.group_id)
+    })
+  })
 }
 
 const onDeleteSuccess = () => {

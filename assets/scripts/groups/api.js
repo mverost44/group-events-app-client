@@ -16,7 +16,10 @@ const createGroup = function (formData) {
 // get all groups
 const getGroups = function () {
   return $.ajax({
-    url: config.apiUrl + '/groups'
+    url: config.apiUrl + '/groups',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 // get user organized groups
